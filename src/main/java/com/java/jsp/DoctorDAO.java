@@ -2,7 +2,12 @@ package com.java.jsp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class DoctorDAO {
 
@@ -26,6 +31,33 @@ public class DoctorDAO {
 		pst.setString(11, doctor.getQualification());
 		pst.executeUpdate();
 		return "Doctor Added SuccessFully";
+	} 
+	
+	
+
+	public Doctor[] showDoctor() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select *from doctor";
+		pst = connection.prepareStatement(cmd);
+		ResultSet res = pst.executeQuery();
+		List<Doctor> doctorList = new ArrayList<Doctor>();
+		Doctor doctor = null;
+		while(res.next()) {
+			doctor = new Doctor();
+			doctor.setId(res.getInt("id"));
+			doctor.setFname(res.getString("fname"));
+			doctor.setLname(res.getString("lname"));
+			doctor.setGender(res.getString("gender"));
+			doctor.setMobile(res.getString("mobile"));
+			doctor.setCity(res.getString("city"));
+			doctor.setEmail(res.getString("email"));
+			doctor.setAge(res.getString("age"));
+			doctor.setAddress(res.getString("address"));
+			doctor.setDate(res.getString("date"));
+			doctor.setQualification(res.getString("qualification"));
+			doctorList.add(doctor);
+		}
+		return doctorList.toArray(new Doctor[doctorList.size()]);
 	}
 	
 }

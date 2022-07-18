@@ -57,8 +57,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" style="margin-right: 30px;">
-                    <a class="dropdown-item" href="HomePage.jsp">Home</a>
-                    
+                    <a class="dropdown-item" href="HomePage.jsp">Home</a>    
                 </div>
             </div>
         </nav> 
