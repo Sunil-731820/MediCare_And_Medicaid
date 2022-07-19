@@ -1,13 +1,14 @@
-<%@page import="com.java.jsp.Worker"%>
-<%@page import="com.java.jsp.WorkerDAO"%>
+<%@page import="com.java.jsp.Patient"%>
+<%@page import="com.java.jsp.PatientDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title> 
-<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<title>Insert title here</title>
+
+ <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet"
@@ -43,8 +44,9 @@
     </style>
 </head>
 <body>
+
 <%
-	WorkerDAO dao = new WorkerDAO();
+	PatientDAO dao = new PatientDAO();
 
 
 %>
@@ -68,13 +70,13 @@
                 <b>Welcome To Health Care</b>
             </h1>
         </div>
-        <form action="addWorker.jsp" method="post">
+        <form action="addpatient.jsp" method="post">
             <!-- Sign up form -->
             <section class="signup">
                 <div class="container"> 
                     <div class="signup-content"> 
                         <div class="signup-form">
-                            <h2 class="form-title">Add Worker </h2>
+                            <h2 class="form-title">Add Doctor</h2>
                             <form class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -84,17 +86,39 @@
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                     <input type="text" name="lname" id="pass" placeholder="Enter Your last Name" required="required"/>
                                 </div>
-                        
+                                
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="gender" id="pass" placeholder="Enter Gender" required="required"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="city" id="pass" placeholder="Enter Your City Name" required="required"/>
+                                </div>
+                               
+                                 <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="email" id="pass" placeholder="Enter Your Email Id " required="required"/>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="age" id="pass" placeholder="Enter Age" required="required"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="address" id="pass" placeholder="Enter Your Address" required="required"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="text" name="date" id="pass" placeholder="Enter the Date" required="required"/>
+                                </div>
                                  <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                     <input type="text" name="mobile" id="pass" placeholder="Enter Your Mobile Number" required="required"/>
                                 </div>
-                                  <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="text" name="date" id="pass" placeholder="Enter the Date" required="required"/>
-                                </div>
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Add Worker"/>
+                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Add Patient"/>
                                 </div>
                             </form>
                         </div>
@@ -106,17 +130,28 @@
                 </div>
             </section>
         </form>
+        
         <%
-        	if(request.getParameter("mobile")!=null && request.getParameter("date")!=null){
-        		Worker worker = new Worker();
-        		worker.setFname(request.getParameter("fname"));
-        		worker.setLname(request.getParameter("lname"));
-        		worker.setMobile(request.getParameter("mobile"));
-        		worker.setDate(request.getParameter("date"));
-        		dao.addWorker(worker);
+        	if(request.getParameter("mobile")!=null && request.getParameter("age")!=null){
+        		Patient patient = new Patient();
+        		patient.setFname(request.getParameter("fname"));
+        		patient.setLname(request.getParameter("lname"));
+        		patient.setGender(request.getParameter("gender"));
+        		patient.setCity(request.getParameter("city"));
+        		patient.setEmail(request.getParameter("email"));
+        		patient.setAge(request.getParameter("age"));
+        		patient.setAddress(request.getParameter("address"));
+        		patient.setDate(request.getParameter("date"));
+        		patient.setMobile(request.getParameter("mobile"));
+        		dao.addPatient(patient);
+        		
         	}
         
         
+        
+        
+        
         %>
+
 </body>
 </html>
