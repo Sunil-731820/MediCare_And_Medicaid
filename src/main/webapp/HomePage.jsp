@@ -43,7 +43,7 @@
             <a href="#" class="navbar-brand"> <img src="img/2855.jpeg"></a>
             <div style="border-radius: 12px;color: red;" align="center">
               <h1>
-                <b style="color: black">&nbsp;&nbsp;Health Care Project</b><br>
+                <b style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome To Health Care</b><br>
             </h1>
             <h2 style="color: black">&nbsp;&nbsp;Admin Can login Only</h2>
             </div>
