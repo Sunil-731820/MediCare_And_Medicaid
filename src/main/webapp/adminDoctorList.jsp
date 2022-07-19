@@ -155,10 +155,10 @@
         		<th>Qualification</th>
         	</tr>
         	<%
-        		for(Doctor doctor : arrdoctor){
+        		for(Doctor doctor : arrdoctor){ 
         	%>
         	<tr>
-        		<td><%=doctor.getId() %></td>
+        		<td><%=doctor.getId() %></td> 
         		<td><%=doctor.getFname() %></td>
         		<td><%=doctor.getLname() %></td>
         		<td><%= doctor.getGender()%></td>
@@ -168,7 +168,7 @@
         		<td><%=doctor.getAge() %></td>
         		<td><%=doctor.getAddress() %></td>
         		<td><%=doctor.getDate() %></td>
-        		<td><%=doctor.getQualification() %></td>
+        		<td><%=doctor.getQualification() %></td>  
         	<td><a href=UpdateAgent.jsp?id=<%= %>>Update</a></td>
 		    <td><a href=DeleteAge.jsp?id=<%= %>>Delete</a></td>
         	
