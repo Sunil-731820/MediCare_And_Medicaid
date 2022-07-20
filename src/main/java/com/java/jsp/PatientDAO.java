@@ -2,7 +2,10 @@ package com.java.jsp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PatientDAO {
 	Connection connection;
@@ -23,6 +26,30 @@ public class PatientDAO {
 		pst.setString(9, patient.getMobile());
 		pst.executeUpdate();
 		return "Patient Records Added Successfully";
+		
+	}
+	
+	public Patient[] showPatient() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select *from patient";
+		pst = connection.prepareStatement(cmd);
+		ResultSet res = pst.executeQuery();
+		List<Patient> patientList = new ArrayList<Patient>();
+		Patient patient = null;
+		while(res.next()) {
+			 patient = new Patient();
+			 patient.setFname(res.getString("fname"));
+			 patient.setLname(res.getString("lname"));
+			 patient.setGender(res.getString("gender"));
+			 patient.setCity(res.getString("city"));
+			 patient.setEmail(res.getString("email"));
+			 patient.setAge(res.getString("age"));
+			 patient.setAddress(res.getString("address"));
+			 patient.setDate(res.getString("date"));
+			 patient.setMobile(res.getString("mobile"));
+			 patientList.add(patient);
+		}
+		return patientList.toArray(new Patient[patientList.size()]);
 		
 	}
 

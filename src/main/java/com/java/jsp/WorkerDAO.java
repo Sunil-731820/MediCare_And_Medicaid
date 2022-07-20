@@ -2,7 +2,10 @@ package com.java.jsp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WorkerDAO {
 
@@ -19,5 +22,24 @@ public class WorkerDAO {
 		pst.setString(4, worker.getDate());
 		pst.executeUpdate();
 		return "worker added SuccessFully";
+	}
+	
+	public Worker[] showWorker() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select *from worker";
+		pst = connection.prepareStatement(cmd);
+		ResultSet res = pst.executeQuery();
+		List<Worker> workerList = new ArrayList<Worker>();
+		Worker worker = null;
+		while(res.next()) {
+			worker = new Worker();
+			worker.setFname(res.getString("fname"));
+			worker.setLname(res.getString("lname"));
+			worker.setMobile(res.getString("mobile"));
+			worker.setDate(res.getString("date"));
+			workerList.add(worker);
+		}
+		return workerList.toArray(new Worker[workerList.size()]);
+		
 	}
 }
