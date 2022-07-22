@@ -41,6 +41,7 @@
     </style>
 </head>
 <body>
+
  <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a href="#" class="navbar-brand"> <img src="img/2855.jpeg"
                                                    height="30" width="100" alt="HospitalManagementSystem">

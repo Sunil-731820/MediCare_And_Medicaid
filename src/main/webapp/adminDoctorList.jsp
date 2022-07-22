@@ -11,8 +11,22 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	<style type="text/css">
+        body {
+            background-image: url("img/Medical.jpg");
+            background-color: #cccccc;
+        }
+        .img-rounded {
+            height: 100%;
+            width: 100%;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
+<body >
 <%
 	DoctorDAO dao = new DoctorDAO();
 	Doctor[] arrDoctor = dao.showDoctor();
