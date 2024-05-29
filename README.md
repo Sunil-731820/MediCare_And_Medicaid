@@ -2,6 +2,7 @@
 FInally Completed , This is the working Model okay so you can download it and install the whole code into your system and i also created the database also in which you can also add or view Details like that.
 
 # This is Basically the real time Project with  various functionality like
+1: Sign In And Sign Up Pages with password is in encrypted form because in database user is not able to see the password.
 
 
 
