@@ -120,7 +120,7 @@
                 <ul class="navbar-nav ml-auto" style="margin-right: 70px;">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="HomePage.jsp">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="HomePage.jsp">Logout <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -138,6 +138,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="addDoctor.jsp">Add Doctor</a>
                             <a class="dropdown-item" href="adminDoctorList.jsp">View Doctor</a>
+                            <a class="dropdown-item" href="DoctorPersonalArea.jsp">Doctor Personal Area</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -156,6 +157,15 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="addWorker.jsp">Add Worker</a>
                             <a class="dropdown-item" href="adminWorkerList.jsp">View Worker</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Help Desk
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="ResetPassword.jsp">For Reset Password</a>
+                            
                         </div>
                     </li>
                 </ul>

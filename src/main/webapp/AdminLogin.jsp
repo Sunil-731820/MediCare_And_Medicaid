@@ -1,3 +1,4 @@
+<%@page import="com.java.jsp.HashingPassword"%>
 <%@page import="com.java.jsp.AdminDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -63,7 +64,7 @@
             </h1>
         </div>
         <!-- Sing in  Form -->
-        <form action="AdminLogin.jsp" method="get">
+        <form action="AdminLogin.jsp" method="post">
             <section class="sign-in">
                 <div class="container">
                     <div class="signin-content">
@@ -99,7 +100,9 @@
         		String username = request.getParameter("username").trim();
         		String password = request.getParameter("password").trim();
         		AdminDAO dao = new AdminDAO();
-        		int count = dao.adminLogIn(username, password);
+        		HashingPassword hashPasword = new HashingPassword();
+        		String HashedPassword = hashPasword.hashPasswordForLoginAttempts(password);
+        		int count = dao.adminLogIn(username, HashedPassword);
         		if(count==1){
         %>
 			<jsp:forward page="DashBoard.jsp"/>

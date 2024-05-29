@@ -1,6 +1,7 @@
 package com.java.jsp;
 
 public class Admin {
+	
 	private String username;
 	private String password;
 	public String getUsername() {

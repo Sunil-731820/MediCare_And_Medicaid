@@ -45,7 +45,7 @@
               <h1>
                 <b style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome To Health Care</b><br>
             </h1>
-            <h2 style="color: black">&nbsp;&nbsp;Admin Can login Only</h2>
+          
             </div>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" style="margin-right: 30px;">

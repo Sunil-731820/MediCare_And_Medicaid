@@ -33,6 +33,16 @@ public class DoctorDAO {
 		return "Doctor Added SuccessFully";
 	} 
 	
+//	This method is automatically generating The Dorctor Id using the database 
+	public int generateDoctorId() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select max(id)+1 ano from doctor ";
+		pst = connection.prepareStatement(cmd);
+		ResultSet res = pst.executeQuery();
+		res.next();
+		int id = res.getInt("ano");
+		return id;
+	}
 	
 
 	public Doctor[] showDoctor() throws ClassNotFoundException, SQLException {

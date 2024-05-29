@@ -1,4 +1,7 @@
 <%@page import="com.java.jsp.HashingPassword"%>
+<%@page import="com.java.jsp.ResetPassword"%>
+<%@page import="com.mysql.cj.x.protobuf.MysqlxSession.Reset"%>
+<%@page import="com.java.jsp.ResetPasswordDAO"%>
 <%@page import="com.java.jsp.Admin"%>
 <%@page import="com.java.jsp.AdminDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -45,7 +48,7 @@
 </head>
 <body>
 <%
-	AdminDAO dao = new AdminDAO();
+	ResetPasswordDAO dao = new ResetPasswordDAO();
 	HashingPassword hashPassword = new HashingPassword();
 
 %>
@@ -60,7 +63,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" style="margin-right: 30px;">
-                    <a class="dropdown-item" href="HomePage.jsp">Home</a>
+                    <a class="dropdown-item" href="DashBoard.jsp">DashBoard</a>
                     
                 </div>
             </div>
@@ -70,7 +73,7 @@
                 <b>Welcome To Health Care</b>
             </h1>
         </div>
-        <form action="AdminRegister.jsp" method="post">
+        <form action="SignUpForSuperAccess.jsp" method="post">
             <!-- Sign up form -->
             <section class="signup">
                 <div class="container"> 
@@ -80,7 +83,7 @@
                             <form method="POST" class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="email" name="username" id="email" placeholder="Your Email" required="required" min="5"/>
+                                    <input type="email" name="userName" id="email" placeholder="Your Email" required="required" min="5"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
@@ -93,32 +96,25 @@
                         </div>
                         <div class="signup-image">
                             <figure><img src="img/signup-image.jpg" alt="sing up image"></figure>
-                            <h2><a href="AdminLogin.jsp" class="signup-image-link">Log In</a></h2>
+                            <h2><a href="ResetPassword.jsp" class="signup-image-link">Log In</a></h2>
                         </div>
                     </div>
                 </div>
             </section>
         </form>
         <%
-        String userName = request.getParameter("username");
+        String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-      
-        if(request.getParameter("username")!=null && request.getParameter("password")!=null){
+        if(request.getParameter("userName")!=null && request.getParameter("password")!=null){
+        	ResetPassword reset = new ResetPassword();
+        	String hashpqwrd = request.getParameter("password");
+        	String hashpasswrodafterhasing = hashPassword.hashingThepassword(hashpqwrd);
+        	reset.setUserName(request.getParameter("userName"));
+        	reset.setPassword(hashpasswrodafterhasing);
         	
-        	Admin admin = new Admin();
-        	/* trying To do hashing for Password  */
-        	String passWord = request.getParameter("password");
-        	  // Hash the password
-            String hashedPassword = hashPassword.hashingThepassword(passWord);
-        	admin.setUsername(request.getParameter("username"));
-        	/* admin.setPassword(request.getParameter("password")); */
-        	admin.setPassword(hashedPassword);
-        	out.print("The Username from admin is : ="+admin.getUsername());
-        	out.println("The password is from admin is : ="+admin.getPassword());
-        	
-        	dao.adminRegister(admin);
+        	dao.resetRegisterForSuperAccess(reset);
         	 %>
-        	 <jsp:forward page="HomePage.jsp"/>
+        	 <jsp:forward page="DashBoard.jsp"/>
         	 
         	<% 
         }

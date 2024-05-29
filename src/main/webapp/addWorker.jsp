@@ -41,6 +41,13 @@
             text-align: center;
         }
     </style>
+    
+    <script>
+    	function validateDate(){
+    	alert("I am calling The validate Date Methods Using Javascript ");
+    	  const dateInput = document.getElementById("dateInput").value;
+    	}
+    </script>
 </head>
 <body>
 <%

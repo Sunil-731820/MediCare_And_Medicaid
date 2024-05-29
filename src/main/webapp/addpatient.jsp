@@ -47,7 +47,7 @@
 
 <%
 	PatientDAO dao = new PatientDAO();
-
+	
 
 %>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -76,7 +76,7 @@
                 <div class="container"> 
                     <div class="signup-content"> 
                         <div class="signup-form">
-                            <h2 class="form-title">Add Doctor</h2>
+                            <h2 class="form-title">Add Patient</h2>
                             <form class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -120,6 +120,7 @@
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Add Patient"/>
                                 </div>
+                               
                             </form>
                         </div>
                         <div class="signup-image">

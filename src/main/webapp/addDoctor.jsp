@@ -45,6 +45,7 @@
 <body>
 <%
 	DoctorDAO dao = new DoctorDAO();
+	int doctorId = dao.generateDoctorId();
 
 %>
  <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -77,7 +78,7 @@
                             <form class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="number" name="id" id="email" placeholder="Enter Your Id" required="required" />
+                                    <input type="number" name="id" id="email" value=<%=doctorId%> required="required" />
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>

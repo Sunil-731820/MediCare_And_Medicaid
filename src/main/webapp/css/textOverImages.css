@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+        .container {
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 130%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional for better readability */
+            padding: 10px;
+            border-radius: 5px;
+        }

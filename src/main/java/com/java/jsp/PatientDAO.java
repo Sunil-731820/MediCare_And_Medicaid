@@ -29,6 +29,17 @@ public class PatientDAO {
 		
 	}
 	
+//	This method is automatically generating The Patiens Id using the database 
+	public int generatePatientId() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select max(id)+1 ano from patient ";
+		pst = connection.prepareStatement(cmd);
+		ResultSet res = pst.executeQuery();
+		res.next();
+		int id = res.getInt("ano");
+		return id;
+	}
+	
 	public Patient[] showPatient() throws ClassNotFoundException, SQLException {
 		connection = ConnectionHelper.getConnection();
 		String cmd = "select *from patient";
@@ -50,6 +61,17 @@ public class PatientDAO {
 			 patientList.add(patient);
 		}
 		return patientList.toArray(new Patient[patientList.size()]);
+		
+	}
+	
+//	This Method is used to delete The data from The database and Ui using SQL Query 
+	public String deletePatient(String email) throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "delete from patient where email=?";
+		pst = connection.prepareStatement(cmd);
+		pst.setString(1, email);
+		pst.executeUpdate();
+		return "Patient Data Deleted Successfully";
 		
 	}
 

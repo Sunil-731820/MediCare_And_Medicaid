@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,8 @@
         <link rel="stylesheet" href="css/textOverImages.css" type="text/css" />
 </head>
 <body>
-	<div class="container">
+
+<div class="container">
 		<img src="img/dribble.png" alt="Sample Image" class="image">
 		<div class="overlay-text">
 			<b>Please enter the Valid Credential ..</b>

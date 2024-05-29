@@ -1,5 +1,5 @@
 <%@page import="com.java.jsp.HashingPassword"%>
-<%@page import="com.java.jsp.Admin"%>
+<%@page import="com.java.jsp.ResetPasswordDAO"%>
 <%@page import="com.java.jsp.AdminDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
- <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet"
@@ -41,14 +41,9 @@
             text-align: center;
         }
     </style>
-   
 </head>
 <body>
-<%
-	AdminDAO dao = new AdminDAO();
-	HashingPassword hashPassword = new HashingPassword();
 
-%>
  <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a href="#" class="navbar-brand"> <img src="img/2855.jpeg"
                                                    height="30" width="100" alt="HospitalManagementSystem">
@@ -60,72 +55,72 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" style="margin-right: 30px;">
-                    <a class="dropdown-item" href="HomePage.jsp">Home</a>
-                    
+                    <a class="dropdown-item" href="SignUpForSuperAccess.jsp">Sign for Super Access</a>
                 </div>
             </div>
-        </nav> 
+        </nav>
         <div>
             <h1>
-                <b>Welcome To Health Care</b>
+                <b>Welcome To Health Care </b>
             </h1>
         </div>
-        <form action="AdminRegister.jsp" method="post">
-            <!-- Sign up form -->
-            <section class="signup">
-                <div class="container"> 
-                    <div class="signup-content"> 
-                        <div class="signup-form">
-                            <h2 class="form-title">Sign up</h2>
-                            <form method="POST" class="register-form" id="register-form">
+        <!-- Sing in  Form -->
+        <form action="ResetPassword.jsp" method="post">
+            <section class="sign-in">
+                <div class="container">
+                    <div class="signin-content">
+                        <div class="signin-image">
+                            <figure><img src="img/signin-image.jpg" alt="sing up image"></figure>
+                            <a href="SignUpForSuperAccess.jsp" class="signup-image-link">Create an Super Access Account</a>
+                        </div>
+
+                        <div class="signin-form"> 
+                            <h2 class="form-title">Sign in</h2>
+                            <form method="get" class="register-form" id="login-form">
                                 <div class="form-group">
-                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="email" name="username" id="email" placeholder="Your Email" required="required" min="5"/>
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="userName" id="your_name" placeholder=" Enter User Name" required="required"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="password" id="pass" placeholder="Password" required="required"/>
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="password" id="your_pass" placeholder="Enter Password" required="required"/>
                                 </div>
+                                
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                    <input type="submit" name="signin" id="signin" class="form-submit" value="Log In"/>
                                 </div>
                             </form>
-                        </div>
-                        <div class="signup-image">
-                            <figure><img src="img/signup-image.jpg" alt="sing up image"></figure>
-                            <h2><a href="AdminLogin.jsp" class="signup-image-link">Log In</a></h2>
                         </div>
                     </div>
                 </div>
             </section>
         </form>
+        
         <%
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-      
-        if(request.getParameter("username")!=null && request.getParameter("password")!=null){
-        	
-        	Admin admin = new Admin();
-        	/* trying To do hashing for Password  */
-        	String passWord = request.getParameter("password");
-        	  // Hash the password
-            String hashedPassword = hashPassword.hashingThepassword(passWord);
-        	admin.setUsername(request.getParameter("username"));
-        	/* admin.setPassword(request.getParameter("password")); */
-        	admin.setPassword(hashedPassword);
-        	out.print("The Username from admin is : ="+admin.getUsername());
-        	out.println("The password is from admin is : ="+admin.getPassword());
-        	
-        	dao.adminRegister(admin);
-        	 %>
-        	 <jsp:forward page="HomePage.jsp"/>
-        	 
+        	if(request.getParameter("userName")!=null && request.getParameter("password")!=null){
+        		String userName = request.getParameter("userName").trim();
+        		String password = request.getParameter("password").trim();
+        		ResetPasswordDAO dao = new ResetPasswordDAO();
+        		HashingPassword hashPassword = new HashingPassword();
+        		String HashedPassword = hashPassword.hashPasswordForLoginAttempts(password);
+        		int count = dao.resetSuperAccessLogin(userName, HashedPassword);
+        		if(count==1){
+        			
+        %>
+			<jsp:forward page="SuperAccessDashBoard.jsp"/>
+			<% 
+        		}
+        		else{
+        	%>	
+        	<jsp:forward page="SuperAccessDashBoardLoginError.jsp"/>
         	<% 
-        }
+        		}
+        		%>
+        		
+        	<%
+        	
+        	}
         %>
        
-
-
-</form>
 </body>
 </html>
